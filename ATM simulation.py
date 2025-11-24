@@ -1,5 +1,8 @@
 def authenticate(correct_pin, max_attempts=3):
 
+    #asks user to enter the correct pin
+    #gives it 3 tries; if all 3 fail denies the access
+        
     while max_attempts > 0:
         get_pin = input("Enter your pin: ")
         max_attempts -= 1
@@ -13,6 +16,8 @@ def authenticate(correct_pin, max_attempts=3):
     return False  
 
 def show_menu():
+
+    #just prints the menu options
     print("\nMenu:")
     print("1 - Check balance")
     print("2 - Deposit money")
@@ -20,6 +25,10 @@ def show_menu():
     print("4 - Exit")
 
 def get_amount(prompt):
+
+    #makes sure that input is a number (float)
+    #doesn't allow negative values
+    
     while True:
         try:
             amount = float(input(prompt))
@@ -31,9 +40,14 @@ def get_amount(prompt):
             print("Error. You need to enter a number")        
             
 def main():
+
+    #balance is set to 0 so it can be updated
+    #previous functions are called
+    #allows the user to choose a number from menu and either shows, updates the balance or exits the program
+    
     balance = 0.0
     correct_pin = "1234"
-    check_pin = authenticate(correct_pin) 
+    check_pin = authenticate(correct_pin) #saves/stores only the return value from a function
     if check_pin:
         print("Logged in!")
         while True:
